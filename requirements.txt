@@ -1,0 +1,4 @@
+yfinance
+pandas
+numpy
+#install with -r requirements.txt
