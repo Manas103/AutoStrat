@@ -1,6 +1,6 @@
 from data.fetch_chain import fetch_option_chain
 from strategy.rank_strategies import rank_all_strategies
-from backtest.simulate import run_backtest
+from backtest.simulate import run_backtest_with_exit
 from strategy.payoff_models import long_call, long_put, long_straddle
 import yfinance as yf
 
@@ -24,5 +24,6 @@ elif top["type"] == "put":
 else:
     strategy = long_straddle(top["strike"], top["lastPrice"]/2, top["lastPrice"]/2)
 
-pnl = run_backtest(close, strategy)
-print("Back-test PnL on top pick:", pnl)
+pnl, exit_day = run_backtest_with_exit(close, strategy,
+                                       tp_pct=0.3, sl_pct=-0.2)
+print(f"Exited on day {exit_day} with PnL = {pnl:.2f}")
