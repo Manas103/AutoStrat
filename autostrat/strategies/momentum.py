@@ -4,7 +4,7 @@ import numpy as np
 
 
 class MomentumStrategy(Strategy):
-    """Simple momentum strategy comparing price to moving average."""
+    """Price > SMA → BUY; price < SMA → SELL."""
 
     def __init__(self, lookback: int = 20):
         super().__init__(name="Momentum")

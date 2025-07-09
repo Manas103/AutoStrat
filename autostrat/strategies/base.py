@@ -10,7 +10,7 @@ class Strategy(ABC):
 
     @abstractmethod
     def generate_signal(self, market_state: Dict[str, Any]) -> str:
-        """Return 'BUY', 'SELL', or 'HOLD' based on market_state."""
+        """Return 'BUY', 'SELL', or 'HOLD'."""
         raise NotImplementedError
 
     def __repr__(self):
